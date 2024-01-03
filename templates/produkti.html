@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nosaukums</th>
+                <th>Kategorija</th>
+                <th>Raksturojums</th>
+                <th>Pieejams/nav pieejams</th>
+                <th>Dienas cena €</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produkts in produkti %}
+                <tr>
+                    <td>{{ produkts["produkta_id"] }}</td>
+                    <td>{{ produkts["nosaukums"] }}</td>
+                    <td>{{ produkts["kategorija"] }}</td>
+                    <td>{{ produkts["teh_rakst"] }}</td>
+                    <td>{{ produkts["pieejams"] }}</td>
+                    <td>{{ produkts["dienas_cena"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
