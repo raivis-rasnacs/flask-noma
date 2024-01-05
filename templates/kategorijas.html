@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <form action="/kategorijas" method="POST">
+        <input 
+            class="form-control"
+            type="text" 
+            name="nosaukums" 
+            id="" 
+            placeholder="Nosaukums">
+        <input type="hidden" name="_method" value="PUT">
+        <input 
+            class="btn btn-primary"
+            type="submit" 
+            value="Pievienot">
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nosaukums</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for kategorija in kategorijas %}
+                <tr>
+                    <td>{{ kategorija.nosaukums }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -5,6 +5,8 @@ from __init__ import create_app
 
 app = create_app()
 
+import views
+
 @app.after_request
 def after_request(response):
     """Ensure responses aren't cached"""
@@ -13,13 +15,12 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
-with app.app_context():
-    import views
-
 app.add_url_rule('/', 
     view_func=views.home)
 app.add_url_rule('/produkti', 
-    view_func=views.show_produkti)
+    view_func=views.produkti)
+app.add_url_rule('/kategorijas', 
+    view_func=views.kategorijas)
 
 if __name__ == '__main__':
     if app.config['FLASK_ENVIRONMENT'] == 'development':

@@ -12,6 +12,6 @@ def create_app():
 
     with app.app_context():
         db.reflect()
-        print("Reflected tables:", db.Model.metadata.tables.keys())
+        #print("Reflected tables:", db.Model.metadata.tables.keys())
 
     return app
