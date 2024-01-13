@@ -1,28 +1,25 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nosaukums</th>
-                <th>Kategorija</th>
-                <th>Raksturojums</th>
-                <th>Pieejams/nav pieejams</th>
-                <th>Dienas cena €</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for produkts in produkti %}
-                <tr>
-                    <td>{{ produkts["produkta_id"] }}</td>
-                    <td>{{ produkts["nosaukums"] }}</td>
-                    <td>{{ produkts["kategorija"] }}</td>
-                    <td>{{ produkts["teh_rakst"] }}</td>
-                    <td>{{ produkts["pieejams"] }}</td>
-                    <td>{{ produkts["dienas_cena"] }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <a 
+    class="btn btn-outline-success"
+    href="/jauns-produkts">
+    Jauns produkts
+    </a>
+<br>
+    {% for produkts, kategorija in produkti %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{ produkts.nosaukums }}</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">{{ kategorija.nosaukums }}</h6>
+          <p class="card-text">{{ produkts.teh_rakst }}</p>
+          {% if produkts.pieejams == True %}
+            <p class="card-text text-success">Pieejams</p>
+            {% else %}
+            <p class="card-text text-danger">Nav pieejams</p>
+            {% endif %}
+          <p class="card-text">{{ produkts.dienas_cena }} €/dienā</p>
+        </div>
+      </div>
+    {% endfor %}
 {% endblock %}

@@ -19,6 +19,8 @@ app.add_url_rule('/',
     view_func=views.home)
 app.add_url_rule('/produkti', 
     view_func=views.produkti)
+app.add_url_rule('/jauns-produkts', 
+    view_func=views.jauns_produkts)
 app.add_url_rule('/kategorijas', 
     view_func=views.kategorijas)
 

@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <form action="/produkti" method="POST">
+        <input 
+            class="form-control"
+            type="text" 
+            name="nosaukums" 
+            id="" 
+            placeholder="Nosaukums">
+        <select 
+            name="kategorija" 
+            id=""
+            class="form-select">
+        {% for kategorija in kategorijas %}
+            <option value="{{ kategorija.kateg_id }}">
+                {{ kategorija.nosaukums}}
+            </option>
+        {% endfor %}
+        </select>
+        <input 
+            class="form-control"
+            type="text" 
+            name="teh_rakst" 
+            id="" 
+            placeholder="Tehniskais raksturojums">
+        <input 
+            class="form-check-input"
+            type="checkbox" 
+            name="pieejams" 
+            id="pieejams_checkbox">
+        <label for="pieejams_checkbox">Vai pieejams?</label>
+        <input 
+            type="number" 
+            name="dienas_cena" 
+            id=""
+            class="form-control"
+            step="0.01">
+        <input type="hidden" name="_method" value="PUT">
+        <input 
+            class="btn btn-outline-success"
+            type="submit" 
+            value="Pievienot">
+    </form>
+
+{% endblock %}
