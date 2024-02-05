@@ -1,7 +1,8 @@
 from flask import (
     request,
     render_template,
-    redirect
+    redirect,
+    url_for
 )
 from models import (
     Nomas,
@@ -28,6 +29,8 @@ def produkti():
             pieejams = request.form.get("pieejams")
             if pieejams is not None:
                 pieejams = True
+            else:
+                pieejams = False
             dienas_cena = request.form.get("dienas_cena")
             
             jauns_produkts = Produkti(
@@ -59,7 +62,6 @@ def jauns_produkts():
         return render_template(
             "jauns_produkts.html", 
             kategorijas=kategorijas)
-jauns_produkts.methods = ["GET", "POST"]
 
 def kategorijas():
     if request.method == "POST":
@@ -80,3 +82,58 @@ def kategorijas():
             "kategorijas.html", 
             kategorijas=kategorijas)
 kategorijas.methods = ["GET", "POST"]
+
+def nomas():
+    if request.method == "POST":
+        pass
+    else:
+        nomas = db.session.query(Nomas, Nomnieki).join(Nomnieki).all()
+        return render_template(
+            "nomas.html", 
+            nomas=nomas
+        )
+    
+def jauna_noma():
+    if request.method == "POST":
+        sak_dat = request.form.get("sak-dat")
+        beigu_dat = request.form.get("beigu-dat")
+        nomnieks = request.form.get("nomnieks")
+        produkti = request.form.get("produkti")
+    else:
+        nomas = db.session.query(Nomas, Nomnieki).join(Nomnieki).all()
+        produkti = db.session.query(Produkti).all()
+        nomnieki = db.session.query(Nomnieki).all()
+        return render_template(
+            "jauna_noma.html", 
+            nomas=nomas,
+            produkti=produkti,
+            nomnieki=nomnieki
+        )
+jauna_noma.methods = ["GET", "POST"]
+    
+def nomnieki():
+    nomnieki = db.session.query(Nomnieki).all()
+    return render_template("nomnieki.html", nomnieki=nomnieki)
+
+def jauns_nomnieks():
+    if request.method == "POST":
+        vards = request.form.get("vards")
+        uzvards = request.form.get("uzvards")
+        pers_kods = request.form.get("personas-kods")
+        tel_numurs = request.form.get("tel-numurs")
+
+        jauns_nomnieks = Nomnieki(
+                nomnieka_id=str(uuid4()),
+                vards=vards,
+                uzvards=uzvards,
+                pers_kods=pers_kods,
+                tel_numurs=tel_numurs
+            )
+        db.session.add(jauns_nomnieks)
+        db.session.commit()
+        return redirect("/jauns-nomnieks")
+    else:
+        return render_template(
+            "jauns_nomnieks.html"
+        )
+jauns_nomnieks.methods = ["GET", "POST"]

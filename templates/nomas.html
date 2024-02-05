@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <a 
+    class="btn btn-outline-success"
+    href="/jauna-noma">
+    Jauna noma
+    </a>
+<br>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Kopējā summa</th>
+                    <th>Sākuma datums</th>
+                    <th>Beigu datums</th>
+                    <th>Nomnieks</th>
+                </tr>
+            </thead>
+            {% if nomas %}
+            {% for noma in nomas %}
+                <tr>
+                    <td>{{ noma.kopeja_cena }}</td>
+                    <td>{{ noma.sak_dat }}</td>
+                    <td>{{ noma.beigu_dat }}</td>
+                    <td>{{ noma.nomnieks }}</td>
+                </tr>
+            {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4" text-center>
+                        Šeit vēl nav datu...
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+{% endblock %}

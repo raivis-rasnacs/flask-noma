@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <a 
+    class="btn btn-outline-success"
+    href="/jauns-nomnieks">
+    Jauns nomnieks
+    </a>
+<br>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Vārds</th>
+                    <th>Uzvārds</th>
+                    <th>Personas kods</th>
+                    <th>Telefona numurs</th>
+                </tr>
+            </thead>
+            {% for nomnieks in nomnieki %}
+                <tr>
+                    <td>{{ nomnieks.vards }}</td>
+                    <td>{{ nomnieks.uzvards }}</td>
+                    <td>{{ nomnieks.pers_kods }}</td>
+                    <td>{{ nomnieks.tel_numurs }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

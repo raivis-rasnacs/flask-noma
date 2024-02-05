@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <form action="/nomas" method="POST">
+        <input 
+            class="form-control"
+            type="text" 
+            name="kopeja-cena" 
+            id="" 
+            placeholder="Kopējā cena">
+        <select 
+            multiple
+            name="produkti" 
+            id=""
+            class="form-select">
+        {% for produkts in produkti %}
+            <option value="{{ produkts.produkta_id }}">
+                {{ produkts.nosaukums }}
+            </option>
+        {% endfor %}
+        </select>
+        <input 
+            class="form-control"
+            type="date" 
+            name="sak-dat" 
+            id="" 
+            placeholder="Sākuma datums">
+        <input 
+            class="form-control"
+            type="date" 
+            name="beigu-dat" 
+            id="" 
+            placeholder="Beigu datums">
+        <select 
+            name="nomnieks" 
+            id=""
+            class="form-select">
+            {% for nomnieks in nomnieki %}
+                <option value="{{ nomnieks.nomnieka_id }}">
+                    {{ nomnieks.vards }} {{ nomnieks.uzvards }} | {{ nomnieks.pers_kods }}
+                </option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Pievienot" class="btn btn-outline-success">
+    </form>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <form action="/jauns-nomnieks" method="POST">
+        <input 
+            class="form-control"
+            type="text" 
+            name="vards" 
+            id="" 
+            placeholder="Vārds">
+        <input 
+            class="form-control"
+            type="text" 
+            name="uzvards" 
+            id="" 
+            placeholder="Uzvārds">
+        <input 
+            class="form-control"
+            type="text" 
+            name="personas-kods" 
+            id="" 
+            placeholder="Personas kods">
+        <input 
+            class="form-control"
+            type="text" 
+            name="tel-numurs" 
+            id="" 
+            placeholder="Telefona numurs">
+        <input type="submit" value="Pievienot" class="btn btn-outline-success">
+    </form>
+
+{% endblock %}

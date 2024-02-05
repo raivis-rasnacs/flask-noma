@@ -26,6 +26,8 @@ display: block;
 color: black;
 padding: 16px;
 text-decoration: none;
+border: 1px solid rgba(0, 0, 0, 0.175);
+margin-bottom: 10px;
 }
 
 .sidebar a.active {
@@ -62,8 +64,11 @@ div.content {margin-left: 0;}
 }
 
 a.btn {
-width: 100%;
 margin-bottom: 10px;
+}
+
+form {
+    max-width: 400px;
 }
 
 form > * {
@@ -76,4 +81,5 @@ padding: 10px;
 
 .card {
     display: inline-block;
+    margin-bottom: 5px;
 }

@@ -23,6 +23,14 @@ app.add_url_rule('/jauns-produkts',
     view_func=views.jauns_produkts)
 app.add_url_rule('/kategorijas', 
     view_func=views.kategorijas)
+app.add_url_rule('/nomas', 
+    view_func=views.nomas)
+app.add_url_rule('/jauna-noma', 
+    view_func=views.jauna_noma)
+app.add_url_rule('/nomnieki', 
+    view_func=views.nomnieki)
+app.add_url_rule('/jauns-nomnieks', 
+    view_func=views.jauns_nomnieks)
 
 if __name__ == '__main__':
     if app.config['FLASK_ENVIRONMENT'] == 'development':
